@@ -16,17 +16,16 @@
 <body>
 	<div class="container">
 
-		<h1>Coursetro Instructor</h1>
+		<h1>Ether Double or Nothing</h1>
 
 		<h2 id="instructor"></h2>
 
-		<label for="name" class="col-lg-2 control-label">Instructor Name</label>
+		<label for="name" class="col-lg-2 control-label">Enter 0.01 ther and hit play game</label>
 		<input id="name" type="text">
 
-		<label for="name" class="col-lg-2 control-label">Instructor Age</label>
-		<input id="age" type="text">
 
-		<button id="button">Update Instructor</button>
+
+		<button id="button">Play Game</button>
 
 
 	</div>
@@ -42,75 +41,73 @@
 		}
 
 		web3.eth.defaultAccount = web3.eth.accounts[0];
-
 		var GuessingGameContract = web3.eth.contract([
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getBalance",
+		"outputs": [
 			{
-				"constant": false,
-				"inputs": [],
-				"name": "playGame",
-				"outputs": [],
-				"payable": true,
-				"stateMutability": "payable",
-				"type": "function"
-			},
-			{
-				"anonymous": false,
-				"inputs": [
-					{
-						"indexed": false,
-						"name": "user",
-						"type": "address"
-					},
-					{
-						"indexed": false,
-						"name": "numberGenerated",
-						"type": "uint256"
-					}
-				],
-				"name": "UserWon",
-				"type": "event"
-			},
-			{
-				"anonymous": false,
-				"inputs": [
-					{
-						"indexed": false,
-						"name": "user",
-						"type": "address"
-					},
-					{
-						"indexed": false,
-						"name": "numberGenerated",
-						"type": "uint256"
-					}
-				],
-				"name": "UserLost",
-				"type": "event"
-			},
-			{
-				"payable": true,
-				"stateMutability": "payable",
-				"type": "fallback"
-			},
-			{
-				"constant": true,
-				"inputs": [],
-				"name": "ge:tBalance",
-				"outputs": [
-					{
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"payable": false,
-				"stateMutability": "view",
-				"type": "function"
+				"name": "",
+				"type": "uint256"
 			}
-		]);
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [],
+		"name": "playGame",
+		"outputs": [],
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "fallback"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "user",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "numberGenerated",
+				"type": "uint256"
+			}
+		],
+		"name": "UserWon",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "user",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "numberGenerated",
+				"type": "uint256"
+			}
+		],
+		"name": "UserLost",
+		"type": "event"
+	}
+]);
+	var GuessingGame = GuessingGameContract.at('0xb4470275dd21318a0a687167b163eaf8487afc5b');
+	console.log(GuessingGame);
 
-		var GuessingGame = GuessingGameContract.at('0xc9b02c1e53f476748588be3c47035cf3355d44c7');
-
-		console.log(GuessingGame);
 	</script>
 
 </body>
