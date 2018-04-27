@@ -18,12 +18,40 @@
 
 		<h1>Ether Double or Nothing</h1>
 
-		<h2 id="instructor"></h2>
-
-		<label for="name" class="col-lg-2 control-label">Enter 0.01 here and hit play game</label>
+		<label for="name" class="col-lg-2 control-label">Enter 0.01 ether and hit play game</label>
 		<input id="name" type="text">
 
+		<h1>This is our code</h1>
+		<xmp>
+pragma solidity ^0.4.21;
 
+contract GuessingGame {
+	uint nonce = 0;
+	event UserWon(address user, uint numberGenerated);
+	event UserLost(address user, uint numberGenerated);
+		
+	function () public payable {
+				
+	}
+			
+	function getBalance() public constant returns (uint) {
+		return address(this).balance;
+	}
+	function playGame() public payable {
+				
+		require(msg.value == 0.01 ether);
+		
+		uint randomNumber = uint(keccak256(block.blockhash(block.number))) % 100;
+		nonce++;
+				
+		if (msg.value % 2 == 0) {
+			emit UserWon(msg.sender, randomNumber);
+		} else {
+			emit UserLost(msg.sender, randomNumber);
+		}
+	}
+}
+		</xmp>
 
 		<button id="button">Play Game</button>
 
@@ -43,20 +71,6 @@
 		web3.eth.defaultAccount = web3.eth.accounts[0];
 		var GuessingGameContract = web3.eth.contract([
 	{
-		"constant": true,
-		"inputs": [],
-		"name": "getBalance",
-		"outputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
 		"constant": false,
 		"inputs": [],
 		"name": "playGame",
@@ -64,11 +78,6 @@
 		"payable": true,
 		"stateMutability": "payable",
 		"type": "function"
-	},
-	{
-		"payable": true,
-		"stateMutability": "payable",
-		"type": "fallback"
 	},
 	{
 		"anonymous": false,
@@ -103,10 +112,30 @@
 		],
 		"name": "UserLost",
 		"type": "event"
+	},
+	{
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "fallback"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getBalance",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
 	}
 ]);
-	var GuessingGame = GuessingGameContract.at('0xb4470275dd21318a0a687167b163eaf8487afc5b');
-	console.log(GuessingGame);
+
+		var GuessingGame = GuessingGameContract.at('0xb7241b84af7f9d9e8677a57d84535a828e03f2fd');
+		console.log(GuessingGame);
 
 	</script>
 
