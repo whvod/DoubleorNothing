@@ -5,4 +5,4 @@
 # To Do:
 call playGame() solidity function
 
-# when doing GuessingGame.playGame(function() {}) metamask notification comes up but fales because I nee to send a msg.value of .01 ether but I only know how to do that via remix.ethereum.org
+# when doing GuessingGame.playGame(function() {}) in html console, metamask notification comes up but fao;s because I need to send a msg.value of .01 ether but I only know how to do that via remix.ethereum.org
