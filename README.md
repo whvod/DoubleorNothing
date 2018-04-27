@@ -1,6 +1,6 @@
 # DoubleorNothing
 
-# when running live server via vscode live server you can check that the contract imports
+# when running live server via vscode live server you can check that the contract imports solidity remix code
 
-#To Do:
+# To Do:
 call playGame() solidity function
