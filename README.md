@@ -4,5 +4,6 @@
 
 # To Do:
 call playGame() solidity function
+make button in jquery or javascript for an interface for the playGame() function
 
 # when doing GuessingGame.playGame(function() {}) in html console, metamask notification comes up but has a transaction error from the contract because I need to send a msg.value of .01 ether but I only know how to do that via remix.ethereum.org
